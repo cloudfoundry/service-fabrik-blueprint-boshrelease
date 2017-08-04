@@ -1,0 +1,9 @@
+---
+name: blueprint
+
+dependencies:
+- node
+- python
+
+files:
+- blueprint-service/**/*

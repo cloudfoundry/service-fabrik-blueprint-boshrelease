@@ -1,0 +1,3 @@
+[submodule "src/blueprint-service"]
+	path = src/blueprint-service
+	url = https://github.com/sap/service-fabrik-blueprint-service

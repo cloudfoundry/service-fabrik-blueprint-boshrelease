@@ -1,0 +1,25 @@
+#!/bin/bash
+
+set -e
+set -u
+
+# We grab the latest versions that are in the directory
+PYTHON_VERSION=`ls -r python/Python-*.tar.xz | sed 's/python\/Python-\(.*\)\.tar\.xz/\1/' | head -1`
+
+# Extract python package
+echo "Extracting python ${PYTHON_VERSION}..."
+tar xpvf ${BOSH_COMPILE_TARGET}/python/Python-${PYTHON_VERSION}.tar.xz
+if [[ $? != 0 ]] ; then
+  echo "Failed extracting python ${PYTHON_VERSION}"
+  exit 1
+fi
+
+# Copy python package
+echo "Copying python ${PYTHON_VERSION}..."
+cp -a ${BOSH_COMPILE_TARGET}/Python-${PYTHON_VERSION}/* ${BOSH_INSTALL_TARGET}/
+
+echo "Installing python..."
+cd ${BOSH_INSTALL_TARGET}
+./configure --prefix=$BOSH_INSTALL_TARGET
+make
+make install

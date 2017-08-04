@@ -1,0 +1,76 @@
+name: blueprint
+director_uuid: <%= `bosh status --uuid` %>
+
+releases:
+- name: blueprint
+  version: latest
+
+compilation:
+  workers: 1
+  network: blueprint-network
+  reuse_compilation_vms: true
+  cloud_properties:
+    name: random
+
+update:
+  canaries: 1
+  canary_watch_time: 30000-240000
+  update_watch_time: 30000-600000
+  max_in_flight: 3
+
+resource_pools:
+- name: default
+  network: blueprint-network
+  size: 1
+  stemcell:
+    name: bosh-warden-boshlite-ubuntu-trusty-go_agent
+    version: latest
+  cloud_properties:
+    name: random
+
+networks:
+- name: blueprint-network
+  type: manual
+  subnets:
+  - range: 10.244.3.0/30
+    gateway: 10.244.3.1
+    static:
+      - 10.244.3.2
+    cloud_properties:
+      name: random
+  - range: 10.244.3.4/30
+    gateway: 10.244.3.5
+    static: []
+    cloud_properties:
+      name: random
+
+jobs: &jobs
+- name: blueprint
+  templates:
+  - { name: blueprint }
+  - { name: blueprint-agent }
+  instances: 1
+  persistent_disk: 1024
+  resource_pool: default
+  networks:
+    - name: blueprint-network
+      static_ips:
+        - 10.244.3.2
+
+properties:
+  blueprint: &blueprint
+    port: 8080
+    admin:
+      username: admin
+      password: admin
+  agent:
+    port: 2718
+    username: admin
+    password: admin
+    provider:
+      name: boshlite
+      container: blueprint_backup
+    manifest:
+      jobs: *jobs
+      properties:
+        blueprint: *blueprint

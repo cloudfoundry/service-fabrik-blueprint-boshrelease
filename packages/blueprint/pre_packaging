@@ -1,0 +1,26 @@
+#!/bin/bash
+
+set -e
+set -u
+
+cd ${BUILD_DIR}/blueprint-service
+
+############### NPM DEPENDENCIES
+
+# Install production dependencies
+npm install --production
+
+############### PYTHON DEPENDENCIES
+
+cd ./backuprestore/service_fabrik_backup_restore
+# Download production dependencies
+curl -sL https://bootstrap.pypa.io/get-pip.py | sudo python3 -
+pip3 download --dest=./dependencies_sources -r requirements.txt
+
+############### Remove unneeded files
+
+rm -rf docs
+rm -rf config
+rm -rf data
+rm -rf test
+rm -f jsdoc.json

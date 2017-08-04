@@ -1,0 +1,10 @@
+.DS_Store
+.idea
+.blobs
+.dev_builds
+dev_releases
+blobs
+config/dev.yml
+config/private.yml
+releases/*.tgz
+tmp

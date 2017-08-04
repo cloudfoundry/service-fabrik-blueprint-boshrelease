@@ -1,0 +1,21 @@
+---
+paths:
+  files: /var/vcap/store/blueprint/files/
+  credentials: /var/vcap/store/blueprint/credentials/
+  logs: /var/vcap/sys/log/blueprint/
+  logs_agent: /var/vcap/sys/log/blueprint-agent/
+port: <%= p('blueprint.port') %>
+admin:
+  username: <%= p('blueprint.admin.username') %>
+  password: <%= p('blueprint.admin.password') %>
+agent:
+  port: <%= p('agent.port') %>
+  username: <%= p('agent.username') %>
+  password: <%= p('agent.password') %>
+  job:
+    name: <%= name %>
+    index: <%= index %>
+  <% if_p('agent.provider') do |provider| %>
+  provider: <%= JSON.dump(provider) %>
+  <% end %>
+  manifest: <%= JSON.dump(p('agent.manifest')) %>

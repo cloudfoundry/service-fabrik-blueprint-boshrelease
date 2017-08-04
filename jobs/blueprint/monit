@@ -1,0 +1,5 @@
+check process blueprint
+  with pidfile /var/vcap/sys/run/blueprint/blueprint.pid
+  start program "/var/vcap/jobs/blueprint/bin/blueprint_ctl start"
+  stop program "/var/vcap/jobs/blueprint/bin/blueprint_ctl stop"
+  group vcap

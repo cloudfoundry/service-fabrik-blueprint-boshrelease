@@ -1,0 +1,33 @@
+#!/bin/bash
+
+#
+# Blueprint-Service Agent properties
+#
+
+# Directory to store the configuration files
+export CONF_DIR=$JOB_DIR/config
+
+# configuration file location
+export SETTINGS_PATH=$CONF_DIR/settings.yml
+
+# Node environment
+export NODE_ENV=production
+
+# Node binary
+export NODE_CMD=/var/vcap/packages/node/bin/node
+
+######## BACKUP / RESTORE
+
+# Python environment
+export PYTHONPATH=/var/vcap/packages/blueprint/backuprestore/service_fabrik_backup_restore/dependencies
+
+# Make monit known to the agent's PATH
+export PATH=/var/vcap/bosh/bin:$PATH
+
+# Environment variables required for the agent to locate the backup and restore scripts
+export AGENT_PATH_BACKUP_SCRIPT=/var/vcap/packages/blueprint/backuprestore/backup.py
+export AGENT_PATH_RESTORE_SCRIPT=/var/vcap/packages/blueprint/backuprestore/restore.py
+
+# Especially required by the Service Fabrik Backup and Restore Python Library (but by the agent as well)
+export SF_BACKUP_RESTORE_LOG_DIRECTORY=/var/vcap/sys/log/blueprint-agent
+export SF_BACKUP_RESTORE_LAST_OPERATION_DIRECTORY=/var/vcap/store/blueprint-agent
