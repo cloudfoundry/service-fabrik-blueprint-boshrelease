@@ -1,0 +1,5 @@
+---
+builds:
+  1a1fff64-ab5a-4d2c-9d37-b54811265dbd:
+    version: 1.0.0
+format-version: '2'

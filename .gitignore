@@ -6,5 +6,5 @@ dev_releases
 blobs
 config/dev.yml
 config/private.yml
-releases/*.tgz
+releases/**/*.tgz
 tmp
