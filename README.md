@@ -3,7 +3,7 @@ Blue-Print Boshrelease
 
 # Overview
 
-A Bosh release for [Blueprint service](https://github.com/SAP/service-fabrik-blueprint-service) which can be used a sample service to try [service-fabrik-broker]((https://github.com/SAP/service-fabrik-broker).
+A Bosh release for [Blueprint service](https://github.com/SAP/service-fabrik-blueprint-service) which can be used a sample service to try [service-fabrik-broker](https://github.com/SAP/service-fabrik-broker).
 
 Idea of blue-print boshrelease is to provide a simple blueprint service that demonstrates the Bosh release, the service agent (in our case conveniently co-located with the service and the bosh release, but in your case most likely separate repositories and maybe even bosh releases if you consume a community bosh release), the deployment manifest template, and its catalog entry.
 
