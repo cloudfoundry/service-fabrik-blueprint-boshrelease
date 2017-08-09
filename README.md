@@ -8,7 +8,7 @@ Idea of blue-print boshrelease is to provide a simple blueprint service that dem
 
 ## Requirements
 
- - Need to have [bosh-lite](https://bosh.io/docs/bosh-lite.html) installed on your machine.
+ Need to have [bosh-lite](https://bosh.io/docs/bosh-lite.html) installed on your machine.
 
 ## Download and Installation
 
