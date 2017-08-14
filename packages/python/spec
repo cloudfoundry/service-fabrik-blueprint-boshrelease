@@ -1,7 +1,7 @@
 ---
 name: python
 
-dependencies:
+dependencies: []
 
 files:
   - python/Python-3.4.3.tar.xz

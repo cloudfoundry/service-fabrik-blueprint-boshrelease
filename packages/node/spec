@@ -1,7 +1,7 @@
 ---
 name: node
 
-dependencies:
+dependencies: []
 
 files:
   - node/node-v6.9.1-linux-x64.tar.xz
