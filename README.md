@@ -18,7 +18,7 @@ Idea of blue-print boshrelease is to provide a simple blueprint service that dem
    ```
    $ git clone https://github.com/sap/service-fabrik-blueprint-boshrelease.git
    $ cd service-fabrik-blueprint-boshrelease
-   $ bosh upload release
+   $ bosh upload release $(ls -1rv releases/blueprint/blueprint-*.yml | head -1)
      Set the Bosh Director UUID in deployments/warden.yml
    $ bosh deployment deployments/warden.yml
    $ bosh -n deploy
