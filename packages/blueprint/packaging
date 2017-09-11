@@ -19,6 +19,8 @@ npm rebuild
 # Install python dependencies
 cd ${SOURCES_PATH}
 mkdir ${PYTHONPATH}
+# update pip
+pip3 install --upgrade pip
 # install pbr package first
 pip3 install --target=${PYTHONPATH} * --no-index --find-links=file://${SOURCES_PATH} --ignore-installed
 
