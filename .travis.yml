@@ -1,0 +1,5 @@
+language: ruby
+install:
+        - "gem install bosh_cli --no-ri --no-rdoc"
+script:
+        - "bosh create release --force --name blueprint"
