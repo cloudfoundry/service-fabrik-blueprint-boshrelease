@@ -1,4 +1,5 @@
 language: ruby
+sudo: required
 install:
         - "gem install bosh_cli --no-ri --no-rdoc"
 script:
