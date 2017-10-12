@@ -1,9 +1,10 @@
----
 builds:
   1a1fff64-ab5a-4d2c-9d37-b54811265dbd:
     version: 1.0.0
-  7de62105-057d-443e-9a39-bce5ad98197b:
-    version: 1.1.0
   771a2c25-1c92-41f4-9dbc-34eeed228311:
     version: 1.2.0
-format-version: '2'
+  7de62105-057d-443e-9a39-bce5ad98197b:
+    version: 1.1.0
+  efe11fc7-eaf9-436c-65a1-3b722bba8905:
+    version: 1.3.0
+format-version: "2"
