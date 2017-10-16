@@ -1,4 +1,4 @@
-# Blue-Print Boshrelease
+# Blueprint Boshrelease
 
 ## Overview
 
