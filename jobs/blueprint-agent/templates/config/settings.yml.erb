@@ -5,6 +5,11 @@ paths:
   logs: /var/vcap/sys/log/blueprint/
   logs_agent: /var/vcap/sys/log/blueprint-agent/
 port: <%= link("blueprint_service").p('port') %>
+<%
+ips = link('blueprint_service').instances.map do |instance|
+    instance.address
+end
+%>
 admin:
   username: <%= link("blueprint_service").p('admin.username') %>
   password: <%= link("blueprint_service").p('admin.password') %>
