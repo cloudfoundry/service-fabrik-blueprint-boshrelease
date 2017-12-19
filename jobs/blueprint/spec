@@ -11,18 +11,20 @@ templates:
   bin/job_properties.sh.erb: bin/job_properties.sh
   bin/blueprint_ctl.erb: bin/blueprint_ctl
 
+provides:
+- name: blueprint_service
+  type: blueprint_service
+  properties:
+  - port
+  - admin
+
+consumes:
+- name: blueprint_agent
+  type: blueprint_agent
+
 properties:
-  blueprint.port:
+  port:
     description: Port of the Blueprint API
     default: 8080
-  blueprint.admin:
+  admin:
     description: Admin credentials of the Blueprint API
-  agent.port:
-    description: Port of Agent API
-    default: 2718
-  agent.username:
-    description: Username of the Agent API
-    default: admin
-  agent.password:
-    description: Password of the Agent API
-    default: admin
