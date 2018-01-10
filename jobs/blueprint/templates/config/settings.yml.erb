@@ -3,11 +3,11 @@ paths:
   files: /var/vcap/store/blueprint/files/
   credentials: /var/vcap/store/blueprint/credentials/
   logs: /var/vcap/sys/log/blueprint/
-port: <%= p('blueprint.port') %>
+port: <%= p('port') %>
 admin:
-  username: <%= p('blueprint.admin.username') %>
-  password: <%= p('blueprint.admin.password') %>
+  username: <%= p('admin.username') %>
+  password: <%= p('admin.password') %>
 agent:
-  port: <%= p('agent.port') %>
-  username: <%= p('agent.username') %>
-  password: <%= p('agent.password') %>
+  port: <%= link("blueprint_agent").p('port') %>
+  username: <%= link("blueprint_agent").p('username') %>
+  password: <%= link("blueprint_agent").p('password') %>
