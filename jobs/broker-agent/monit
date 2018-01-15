@@ -1,0 +1,5 @@
+check process broker-agent
+  with pidfile /var/vcap/sys/run/broker-agent/broker-agent.pid
+  start program "/var/vcap/jobs/broker-agent/bin/broker-agent_ctl start"
+  stop program "/var/vcap/jobs/broker-agent/bin/broker-agent_ctl stop"
+  group vcap

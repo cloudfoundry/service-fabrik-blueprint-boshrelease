@@ -1,5 +1,5 @@
 ---
-name: blueprint-agent
+name: broker-agent
 
 packages:
   - bosh-helpers
@@ -10,7 +10,7 @@ packages:
 templates:
   config/settings.yml.erb: config/settings.yml
   bin/job_properties.sh.erb: bin/job_properties.sh
-  bin/blueprint-agent_ctl.erb: bin/blueprint-agent_ctl
+  bin/broker-agent_ctl.erb: bin/broker-agent_ctl
 
 provides:
 - name: blueprint_agent

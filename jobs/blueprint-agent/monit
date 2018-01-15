@@ -1,5 +1,0 @@
-check process blueprint-agent
-  with pidfile /var/vcap/sys/run/blueprint-agent/blueprint-agent.pid
-  start program "/var/vcap/jobs/blueprint-agent/bin/blueprint-agent_ctl start"
-  stop program "/var/vcap/jobs/blueprint-agent/bin/blueprint-agent_ctl stop"
-  group vcap
