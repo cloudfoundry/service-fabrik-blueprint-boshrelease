@@ -1,0 +1,40 @@
+name: blueprint
+version: 1.5.0
+commit_hash: 97a62bc
+uncommitted_changes: false
+jobs:
+- name: blueprint
+  version: 1463d7c2435a608d370c7a020a664f0a18040c6d
+  fingerprint: 1463d7c2435a608d370c7a020a664f0a18040c6d
+  sha1: 351fa87b66413900d2c760bf0d390f6c2eeb91e7
+- name: blueprint-agent
+  version: c9128e9a573573c4b2c82df5c3e53504136ecec0
+  fingerprint: c9128e9a573573c4b2c82df5c3e53504136ecec0
+  sha1: f9758cc4858470a031f32a7490d25fe070a80a1f
+packages:
+- name: blueprint
+  version: 5f17eb7e00583363f82c87cb0cd33c8fa64b64d1
+  fingerprint: 5f17eb7e00583363f82c87cb0cd33c8fa64b64d1
+  sha1: 39e9e3951e45927e32a2b3cd302f3853973fc4eb
+  dependencies:
+  - node
+  - python
+- name: bosh-helpers
+  version: ac20614f3135bac0f1e5860862d812cf334ccfb5
+  fingerprint: ac20614f3135bac0f1e5860862d812cf334ccfb5
+  sha1: 584ac45c1e1654eb49cb97ceacb80ef3842e5ed1
+  dependencies: []
+- name: node
+  version: f52ecf027816d9bb601afaf566dad7ced94a767d
+  fingerprint: f52ecf027816d9bb601afaf566dad7ced94a767d
+  sha1: abaf3a8c9ebb2edb0847b88b4fb24cfa6bfe7112
+  dependencies: []
+- name: python
+  version: 6f39ee5cf59b2c1bfff548526ecd1f58b9c2a85e
+  fingerprint: 6f39ee5cf59b2c1bfff548526ecd1f58b9c2a85e
+  sha1: 7ef955bdb992a320dc7fd272e70fe23418d09e87
+  dependencies: []
+license:
+  version: 4769c65e2be7d485ec58dd91cb0e8fd268fa84c7
+  fingerprint: 4769c65e2be7d485ec58dd91cb0e8fd268fa84c7
+  sha1: 302e0491dc135ff652050c8aad843258839e7600

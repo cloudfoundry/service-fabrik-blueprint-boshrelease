@@ -13,14 +13,14 @@ templates:
 
 provides:
 - name: blueprint_service
-  type: blueprint_service_conn
+  type: blueprint_service
   properties:
   - port
   - admin
 
 consumes:
-- name: sf_agent
-  type: agent_conn
+- name: blueprint_agent
+  type: blueprint_agent
 
 properties:
   port:

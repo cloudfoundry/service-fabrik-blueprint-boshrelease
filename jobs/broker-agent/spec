@@ -1,5 +1,5 @@
 ---
-name: blueprint-agent
+name: broker-agent
 
 packages:
   - bosh-helpers
@@ -10,7 +10,19 @@ packages:
 templates:
   config/settings.yml.erb: config/settings.yml
   bin/job_properties.sh.erb: bin/job_properties.sh
-  bin/blueprint-agent_ctl.erb: bin/blueprint-agent_ctl
+  bin/broker-agent_ctl.erb: bin/broker-agent_ctl
+
+provides:
+- name: blueprint_agent
+  type: blueprint_agent
+  properties:
+  - port
+  - username
+  - password
+
+consumes:
+- name: blueprint_service
+  type: blueprint_service
 
 provides:
 - name: sf_agent
@@ -36,3 +48,9 @@ properties:
     default: admin
   provider:
     description: IaaS Provider configuration required for backup and restore.
+  manifest.jobs:
+    description: The jobs of the deployment manifest.
+    default: []
+  manifest.properties:
+    description: The properties of the deployment manifest.
+    default: {}

@@ -8,6 +8,6 @@ admin:
   username: <%= p('admin.username') %>
   password: <%= p('admin.password') %>
 agent:
-  port: <%= link('sf_agent').p('port') %>
-  username: <%= link('sf_agent').p('username') %>
-  password: <%= link('sf_agent').p('password') %>
+  port: <%= link("blueprint_agent").p('port') %>
+  username: <%= link("blueprint_agent").p('username') %>
+  password: <%= link("blueprint_agent").p('password') %>

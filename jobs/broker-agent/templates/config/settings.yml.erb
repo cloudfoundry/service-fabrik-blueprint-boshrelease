@@ -1,0 +1,37 @@
+---
+paths:
+  files: /var/vcap/store/blueprint/files/
+  credentials: /var/vcap/store/blueprint/credentials/
+  logs: /var/vcap/sys/log/blueprint/
+  logs_agent: /var/vcap/sys/log/broker-agent/
+port: <%= link("blueprint_service").p('port') %>
+<%
+ips = link('blueprint_service').instances.map do |instance|
+    instance.address
+end
+%>
+admin:
+  username: <%= link("blueprint_service").p('admin.username') %>
+  password: <%= link("blueprint_service").p('admin.password') %>
+agent:
+  port: <%= p('port') %>
+  username: <%= p('username') %>
+  password: <%= p('password') %>
+  job:
+    name: <%= name %>
+    index: <%= index %>
+  <% if_p('provider') do |provider| %>
+  provider: <%= JSON.dump(provider) %>
+  <% end %>
+  manifest:
+    jobs:
+    - name: blueprint
+      networks:
+      - name: blueprint-network
+        static_ips: <%= JSON.dump(ips) %>
+    properties:
+      blueprint:
+        port: <%= link('blueprint_service').p('port') %>
+        admin:
+          username: <%= link('blueprint_service').p('admin.username') %>
+          password: <%= link('blueprint_service').p('admin.password') %>
