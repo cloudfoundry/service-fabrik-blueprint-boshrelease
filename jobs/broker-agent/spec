@@ -24,18 +24,6 @@ consumes:
 - name: blueprint_service
   type: blueprint_service
 
-provides:
-- name: sf_agent
-  type: agent_conn
-  properties:
-  - port
-  - username
-  - password
-
-consumes:
-- name: blueprint_service
-  type: blueprint_service_conn
-
 properties:
   port:
     description: Port of Agent API.
