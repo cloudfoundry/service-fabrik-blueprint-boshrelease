@@ -5,12 +5,10 @@ releases:
 - name: blueprint
   version: latest
 
-compilation:
-  workers: 1
-  network: blueprint-network
-  reuse_compilation_vms: true
-  cloud_properties:
-    name: random
+stemcells:
+- alias: ubuntu-trusty
+  name: bosh-aws-xen-hvm-ubuntu-trusty-go_agent
+  version: latest
 
 update:
   canaries: 1
@@ -18,59 +16,33 @@ update:
   update_watch_time: 30000-600000
   max_in_flight: 3
 
-resource_pools:
-- name: default
-  network: blueprint-network
-  size: 1
-  stemcell:
-    name: bosh-warden-boshlite-ubuntu-trusty-go_agent
-    version: latest
-  cloud_properties:
-    name: random
-
-networks:
-- name: blueprint-network
-  type: manual
-  subnets:
-  - range: 10.244.3.0/30
-    gateway: 10.244.3.1
-    static:
-      - 10.244.3.2
-    cloud_properties:
-      name: random
-  - range: 10.244.3.4/30
-    gateway: 10.244.3.5
-    static: []
-    cloud_properties:
-      name: random
-
-jobs: &jobs
+instance_groups:
 - name: blueprint
-  templates:
-  - { name: blueprint }
-  - { name: blueprint-agent }
+  migrated_from:
+  - name: blueprint_z1
+    az: z1
   instances: 1
-  persistent_disk: 1024
-  resource_pool: default
   networks:
-    - name: blueprint-network
-      static_ips:
-        - 10.244.3.2
-
-properties:
-  blueprint: &blueprint
-    port: 8080
-    admin:
-      username: admin
-      password: admin
-  agent:
-    port: 2718
-    username: admin
-    password: admin
-    provider:
-      name: boshlite
-      container: blueprint_backup
-    manifest:
-      jobs: *jobs
-      properties:
-        blueprint: *blueprint
+  - name: sf_bosh_services
+    static_ips:
+    - 10.11.45.112
+  vm_type: service_fabrik_vm_micro
+  persistent_disk_type: service_fabrik_hdd_1gb
+  azs:
+  - z1
+  stemcell: ubuntu-trusty
+  jobs:
+  - name: blueprint
+    release: blueprint
+    blueprint:
+    properties:
+      port: 8080
+      admin:
+        username: admin
+        password: admin
+  - name: broker-agent
+    release: blueprint
+    properties:
+      username: service-fabrik-blueprint-agent
+      password: service-fabrik-blueprint-secret
+      provider:
