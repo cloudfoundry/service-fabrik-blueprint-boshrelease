@@ -21,8 +21,10 @@ cd ${SOURCES_PATH}
 mkdir ${PYTHONPATH}
 # update pip
 pip3 install --upgrade pip
+pip3 install --upgrade setuptools
+apt-get install build-essential libssl-dev libffi-dev python3-dev -y
 # install pbr package first
-pip3 install --target=${PYTHONPATH} * --no-index --find-links=file://${SOURCES_PATH} --ignore-installed
+pip3 install --target=${PYTHONPATH} * --ignore-installed
 
 # Remove python2 backport module 'futures'
 # In python 3, the functionalities of 'futures' are builtin. As the python-swiftclient package is compatiable for both
