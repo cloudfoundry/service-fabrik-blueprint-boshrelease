@@ -5,7 +5,7 @@ set -u
 PATH=/var/vcap/packages/node/bin:/var/vcap/packages/python/bin:$PATH
 
 PYTHONPATH=${BOSH_INSTALL_TARGET}/backuprestore/service_fabrik_backup_restore/dependencies
-SOURCES_PATH=${BOSH_INSTALL_TARGET}/backuprestore/service_fabrik_backup_restore/dependencies_sources
+SOURCES_PATH=${BOSH_INSTALL_TARGET}/backuprestore/service_fabrik_backup_restore
 
 # Copy the 'blueprint-service' directory from /src/ to the installation target of this release
 echo "Copying blueprint service files..."
@@ -22,7 +22,7 @@ mkdir ${PYTHONPATH}
 # update pip
 pip3 install --upgrade pip
 # install pbr package first
-pip3 install --target=${PYTHONPATH} * --no-index --find-links=file://${SOURCES_PATH} --ignore-installed
+pip3 install --target=${PYTHONPATH}  --ignore-installed -r requirements.txt
 
 # Remove python2 backport module 'futures'
 # In python 3, the functionalities of 'futures' are builtin. As the python-swiftclient package is compatiable for both
@@ -31,6 +31,3 @@ pip3 install --target=${PYTHONPATH} * --no-index --find-links=file://${SOURCES_P
 # Unfortunately, pip has no mechanism to uninstall a package from a specific directory. Thus, we have to delete it manually.
 rm -rf ${PYTHONPATH}/concurrent
 rm -rf ${PYTHONPATH}/futures*
-
-# Remove dependency sources
-rm -rf ${SOURCES_PATH}
