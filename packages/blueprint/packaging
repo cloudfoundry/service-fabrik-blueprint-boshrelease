@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # abort script on any command that exits with a non zero value
 set -e
 set -u
@@ -6,6 +8,8 @@ PATH=/var/vcap/packages/node/bin:/var/vcap/packages/python/bin:$PATH
 
 PYTHONPATH=${BOSH_INSTALL_TARGET}/backuprestore/service_fabrik_backup_restore/dependencies
 SOURCES_PATH=${BOSH_INSTALL_TARGET}/backuprestore/service_fabrik_backup_restore/dependencies_sources
+
+PIP_VERSION=`ls -r python/pip-*.tar.gz | sed 's/python\/pip-\(.*\)\.tar\.gz/\1/' | head -1`
 
 # Copy the 'blueprint-service' directory from /src/ to the installation target of this release
 echo "Copying blueprint service files..."
@@ -19,8 +23,28 @@ npm rebuild
 # Install python dependencies
 cd ${SOURCES_PATH}
 mkdir ${PYTHONPATH}
+
 # update pip
-pip3 install --upgrade pip
+#pip3 install --upgrade pip
+echo "Extracting pip ${PIP_VERSION}"
+tar xpvf ${BOSH_COMPILE_TARGET}/python/pip-${PIP_VERSION}.tar.gz
+if [[ $? != 0 ]]; then
+  echo "Failed extracting pip ${PIP_VERSION}"
+  exit 1
+fi
+
+# Copy PIP package
+echo "Copying pip ${PIP_VERSION}.."
+cp -a ${BOSH_COMPILE_TARGET}/pip-${PIP_VERSION}/* ${BOSH_INSTALL_TARGET}/
+
+echo "Installing pip..."
+cd ${BOSH_INSTALL_TARGET}
+
+pushd pip-${PIP_VERSION}
+  /var/vcap/packages/python/bin/python setup.py install --prefix=$BOSH_INSTALL_TARGET
+popd
+
+
 # install pbr package first
 pip3 install --target=${PYTHONPATH} * --no-index --find-links=file://${SOURCES_PATH} --ignore-installed
 

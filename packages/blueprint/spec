@@ -7,3 +7,4 @@ dependencies:
 
 files:
 - blueprint-service/**/*
+- python/pip-9.0.3.tar.gz
