@@ -6,7 +6,7 @@ python/Python-3.4.3.tar.xz:
   size: 14421964
   object_id: e4a90d84-f05e-4a8d-8d59-a7f26809afdb
   sha: 7ca5cd664598bea96eec105aa6453223bb6b4456
-python/pip-9.0.3.tar.gz:
-  size: 6249079
-  object_id: 8c5ca075-b8f3-4a26-77f2-e1e1624dff7d
-  sha: 5d0be4465bb271ab7095367d2af7cd32022eb6f3
+python/pip-18.1.tar.gz:
+  size: 6211295
+  object_id: 6b227ef6-401d-4d8a-5fdf-655e72ecfb4d
+  sha: 72f004c193f4cb04645d9bca3cdbc8f33ede530e

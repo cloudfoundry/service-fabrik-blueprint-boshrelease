@@ -6,7 +6,10 @@ set -u
 
 PATH=/var/vcap/packages/node/bin:/var/vcap/packages/python/bin:$PATH
 
-PYTHONPATH=${BOSH_INSTALL_TARGET}/backuprestore/service_fabrik_backup_restore/dependencies
+echo "$BOSH_INSTALL_TARGET -> BOSH_INSTALL_TARGET"
+echo "$BOSH_COMPILE_TARGET -> BOSH_COMPILE_TARGET"
+
+PYTHONLIBS=${BOSH_INSTALL_TARGET}/backuprestore/service_fabrik_backup_restore/dependencies
 SOURCES_PATH=${BOSH_INSTALL_TARGET}/backuprestore/service_fabrik_backup_restore/dependencies_sources
 
 PIP_VERSION=`ls -r python/pip-*.tar.gz | sed 's/python\/pip-\(.*\)\.tar\.gz/\1/' | head -1`
@@ -20,41 +23,46 @@ echo "Rebuild NPM dependencies..."
 cd ${BOSH_INSTALL_TARGET}
 npm rebuild
 
-# Install python dependencies
-cd ${SOURCES_PATH}
-mkdir ${PYTHONPATH}
-
 # update pip
-#pip3 install --upgrade pip
 echo "Extracting pip ${PIP_VERSION}"
 tar xpvf ${BOSH_COMPILE_TARGET}/python/pip-${PIP_VERSION}.tar.gz
 if [[ $? != 0 ]]; then
   echo "Failed extracting pip ${PIP_VERSION}"
   exit 1
+else
+  echo "Successfully extracted pip-${PIP_VERSION}..."
 fi
 
-# Copy PIP package
-echo "Copying pip ${PIP_VERSION}.."
-cp -a ${BOSH_COMPILE_TARGET}/pip-${PIP_VERSION}/* ${BOSH_INSTALL_TARGET}/
-
 echo "Installing pip..."
-cd ${BOSH_INSTALL_TARGET}
+echo "Creating the pip site packages..."
+mkdir -p $BOSH_INSTALL_TARGET/lib/python3.4/site-packages
+
+echo "Setting the PYTHONPATH with setuptools and pip site packages..."
+export PYTHONPATH=$BOSH_INSTALL_TARGET/lib/python3.4/site-packages
 
 pushd pip-${PIP_VERSION}
-  /var/vcap/packages/python/bin/python setup.py install --prefix=$BOSH_INSTALL_TARGET
+  /var/vcap/packages/python/bin/python3 setup.py install --prefix=$BOSH_INSTALL_TARGET
 popd
 
+# Install python dependencies
+cd ${SOURCES_PATH}
+mkdir ${PYTHONLIBS}
 
 # install pbr package first
-pip3 install --target=${PYTHONPATH} * --no-index --find-links=file://${SOURCES_PATH} --ignore-installed
+echo "-------------"
+echo "Version of pip3:"
+pip3 --version
+/var/vcap/packages/python/bin/pip3 --version
+echo "-------------"
+pip3 install --target=${PYTHONLIBS} * --no-index --find-links=file://${SOURCES_PATH} --ignore-installed
 
 # Remove python2 backport module 'futures'
 # In python 3, the functionalities of 'futures' are builtin. As the python-swiftclient package is compatiable for both
 #   python2 and python3, it lists 'futures' in its dependencies list. We have to delete it to prevent python from using
 #   the functionalities of this module which are incompatible with python3 itself.
 # Unfortunately, pip has no mechanism to uninstall a package from a specific directory. Thus, we have to delete it manually.
-rm -rf ${PYTHONPATH}/concurrent
-rm -rf ${PYTHONPATH}/futures*
+rm -rf ${PYTHONLIBS}/concurrent
+rm -rf ${PYTHONLIBS}/futures*
 
 # Remove dependency sources
 rm -rf ${SOURCES_PATH}
