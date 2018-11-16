@@ -35,13 +35,14 @@ fi
 
 echo "Installing pip..."
 echo "Creating the pip site packages..."
-mkdir -p $BOSH_INSTALL_TARGET/lib/python3.4/site-packages
+mkdir -p /var/vcap/packages/python/lib/python3.4/site-packages
 
 echo "Setting the PYTHONPATH with setuptools and pip site packages..."
-export PYTHONPATH=$BOSH_INSTALL_TARGET/lib/python3.4/site-packages
+export PYTHONPATH=/var/vcap/packages/python/lib/python3.4/site-packages
 
 pushd pip-${PIP_VERSION}
-  /var/vcap/packages/python/bin/python3 setup.py install --prefix=$BOSH_INSTALL_TARGET
+  /var/vcap/packages/python/bin/python3 setup.py install --prefix=/var/vcap/packages/python
+#  /var/vcap/packages/python/bin/python3 setup.py install --prefix=$BOSH_INSTALL_TARGET
 popd
 
 # Install python dependencies
@@ -49,13 +50,12 @@ cd ${SOURCES_PATH}
 mkdir ${PYTHONLIBS}
 
 # install pbr package first
-echo "-------------"
-echo "Version of pip3:"
-pip3 --version
-/var/vcap/packages/python/bin/pip3 --version
-echo "-------------"
+#echo "-------------"
+#echo "Version of pip3:"
+#pip3 --version
+#/var/vcap/packages/python/bin/pip3 --version
+#echo "-------------"
 pip3 install --target=${PYTHONLIBS} * --no-index --find-links=file://${SOURCES_PATH} --ignore-installed
-
 # Remove python2 backport module 'futures'
 # In python 3, the functionalities of 'futures' are builtin. As the python-swiftclient package is compatiable for both
 #   python2 and python3, it lists 'futures' in its dependencies list. We have to delete it to prevent python from using
