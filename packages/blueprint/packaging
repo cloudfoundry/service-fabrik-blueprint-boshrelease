@@ -38,7 +38,7 @@ echo "Creating the pip site packages..."
 mkdir -p /var/vcap/packages/python/lib/python3.4/site-packages
 
 echo "Setting the PYTHONPATH with setuptools and pip site packages..."
-export PYTHONPATH=/var/vcap/packages/python/lib/python3.4/site-packages
+export PYTHONPATH=/var/vcap/packages/python/lib/python3.4/site-packages:$PYTHONLIBS
 
 pushd pip-${PIP_VERSION}
   /var/vcap/packages/python/bin/python3 setup.py install --prefix=/var/vcap/packages/python
