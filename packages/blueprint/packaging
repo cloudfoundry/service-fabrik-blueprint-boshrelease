@@ -6,12 +6,8 @@ set -u
 
 PATH=/var/vcap/packages/node/bin:/var/vcap/packages/python/bin:$PATH
 
-echo "$BOSH_INSTALL_TARGET -> BOSH_INSTALL_TARGET"
-echo "$BOSH_COMPILE_TARGET -> BOSH_COMPILE_TARGET"
-
 PYTHONLIBS=${BOSH_INSTALL_TARGET}/backuprestore/service_fabrik_backup_restore/dependencies
 SOURCES_PATH=${BOSH_INSTALL_TARGET}/backuprestore/service_fabrik_backup_restore/dependencies_sources
-
 PIP_VERSION=`ls -r python/pip-*.tar.gz | sed 's/python\/pip-\(.*\)\.tar\.gz/\1/' | head -1`
 
 # Copy the 'blueprint-service' directory from /src/ to the installation target of this release
@@ -42,7 +38,6 @@ export PYTHONPATH=/var/vcap/packages/python/lib/python3.4/site-packages:$PYTHONL
 
 pushd pip-${PIP_VERSION}
   /var/vcap/packages/python/bin/python3 setup.py install --prefix=/var/vcap/packages/python
-#  /var/vcap/packages/python/bin/python3 setup.py install --prefix=$BOSH_INSTALL_TARGET
 popd
 
 # Install python dependencies
@@ -50,11 +45,6 @@ cd ${SOURCES_PATH}
 mkdir ${PYTHONLIBS}
 
 # install pbr package first
-#echo "-------------"
-#echo "Version of pip3:"
-#pip3 --version
-#/var/vcap/packages/python/bin/pip3 --version
-#echo "-------------"
 pip3 install --target=${PYTHONLIBS} * --no-index --find-links=file://${SOURCES_PATH} --ignore-installed
 # Remove python2 backport module 'futures'
 # In python 3, the functionalities of 'futures' are builtin. As the python-swiftclient package is compatiable for both
