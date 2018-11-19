@@ -33,6 +33,7 @@ echo "Installing pip..."
 echo "Creating the pip site packages..."
 mkdir -p /var/vcap/packages/python/lib/python3.4/site-packages
 
+# Setting PYTHONPATH environment variable so that `pip3 install` used later can locate the custom modules/packages
 echo "Setting the PYTHONPATH with setuptools and pip site packages..."
 export PYTHONPATH=/var/vcap/packages/python/lib/python3.4/site-packages:$PYTHONLIBS
 
