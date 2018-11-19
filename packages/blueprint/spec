@@ -7,3 +7,4 @@ dependencies:
 
 files:
 - blueprint-service/**/*
+- python/pip-18.1.tar.gz

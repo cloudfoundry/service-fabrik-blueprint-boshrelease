@@ -1,11 +1,14 @@
+#!/bin/bash
+
 # abort script on any command that exits with a non zero value
 set -e
 set -u
 
 PATH=/var/vcap/packages/node/bin:/var/vcap/packages/python/bin:$PATH
 
-PYTHONPATH=${BOSH_INSTALL_TARGET}/backuprestore/service_fabrik_backup_restore/dependencies
+PYTHONLIBS=${BOSH_INSTALL_TARGET}/backuprestore/service_fabrik_backup_restore/dependencies
 SOURCES_PATH=${BOSH_INSTALL_TARGET}/backuprestore/service_fabrik_backup_restore/dependencies_sources
+PIP_VERSION=`ls -r python/pip-*.tar.gz | sed 's/python\/pip-\(.*\)\.tar\.gz/\1/' | head -1`
 
 # Copy the 'blueprint-service' directory from /src/ to the installation target of this release
 echo "Copying blueprint service files..."
@@ -16,21 +19,41 @@ echo "Rebuild NPM dependencies..."
 cd ${BOSH_INSTALL_TARGET}
 npm rebuild
 
+# update pip
+echo "Extracting pip ${PIP_VERSION}"
+tar xpvf ${BOSH_COMPILE_TARGET}/python/pip-${PIP_VERSION}.tar.gz
+if [[ $? != 0 ]]; then
+  echo "Failed extracting pip ${PIP_VERSION}"
+  exit 1
+else
+  echo "Successfully extracted pip-${PIP_VERSION}..."
+fi
+
+echo "Installing pip..."
+echo "Creating the pip site packages..."
+mkdir -p /var/vcap/packages/python/lib/python3.4/site-packages
+
+# Setting PYTHONPATH environment variable so that `pip3 install` used later can locate the custom modules/packages
+echo "Setting the PYTHONPATH with setuptools and pip site packages..."
+export PYTHONPATH=/var/vcap/packages/python/lib/python3.4/site-packages:$PYTHONLIBS
+
+pushd pip-${PIP_VERSION}
+  /var/vcap/packages/python/bin/python3 setup.py install --prefix=/var/vcap/packages/python
+popd
+
 # Install python dependencies
 cd ${SOURCES_PATH}
-mkdir ${PYTHONPATH}
-# update pip
-pip3 install --upgrade pip
-# install pbr package first
-pip3 install --target=${PYTHONPATH} * --no-index --find-links=file://${SOURCES_PATH} --ignore-installed
+mkdir ${PYTHONLIBS}
 
+# install pbr package first
+pip3 install --target=${PYTHONLIBS} * --no-index --find-links=file://${SOURCES_PATH} --ignore-installed
 # Remove python2 backport module 'futures'
 # In python 3, the functionalities of 'futures' are builtin. As the python-swiftclient package is compatiable for both
 #   python2 and python3, it lists 'futures' in its dependencies list. We have to delete it to prevent python from using
 #   the functionalities of this module which are incompatible with python3 itself.
 # Unfortunately, pip has no mechanism to uninstall a package from a specific directory. Thus, we have to delete it manually.
-rm -rf ${PYTHONPATH}/concurrent
-rm -rf ${PYTHONPATH}/futures*
+rm -rf ${PYTHONLIBS}/concurrent
+rm -rf ${PYTHONLIBS}/futures*
 
 # Remove dependency sources
 rm -rf ${SOURCES_PATH}
