@@ -22,7 +22,7 @@ export NODE_CMD=/var/vcap/packages/node/bin/node
 export PYTHONPATH=/var/vcap/packages/blueprint/backuprestore/service_fabrik_backup_restore/dependencies
 
 # Make monit known to the agent's PATH
-export PATH=/var/vcap/bosh/bin:$PATH
+export PATH=/var/vcap/packages/python/bin:/var/vcap/bosh/bin:$PATH
 
 # Environment variables required for the agent to locate the backup and restore scripts
 export AGENT_PATH_BACKUP_SCRIPT=/var/vcap/packages/blueprint/backuprestore/backup.py
