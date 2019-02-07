@@ -1,7 +1,0 @@
-#!/bin/bash
-
-#simulate the pre-warming errand
-echo "Starting disk pre-warming simulation"
-sleep 3m
-echo "Disk pre-warming simulation ended"
-exit 0

@@ -1,0 +1,7 @@
+#!/bin/bash
+
+#simulate the pre-warming errand
+echo "Starting errand simulation"
+sleep 2m
+echo "Errand simulation ended"
+exit 0
