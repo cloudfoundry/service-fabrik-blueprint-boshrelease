@@ -1,0 +1,11 @@
+---
+name: errand_simulation
+
+description: Simulates pre-warming/PITR errands by just introducing time wait.
+
+templates:
+  run: bin/run
+
+packages: []
+
+properties: {}

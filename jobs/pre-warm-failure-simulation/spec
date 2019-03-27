@@ -1,0 +1,11 @@
+---
+name: pre-warm-failure-simulation
+
+description: Simulates Disk pre-warming failure by just introducing time wait.
+
+templates:
+  run: bin/run
+
+packages: []
+
+properties: {}
