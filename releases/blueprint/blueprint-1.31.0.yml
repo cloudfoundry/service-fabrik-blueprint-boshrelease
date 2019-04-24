@@ -1,0 +1,48 @@
+name: blueprint
+version: 1.31.0
+commit_hash: 6b80bc3
+uncommitted_changes: false
+jobs:
+- name: blueprint
+  version: ea0325eae8991fafd318d8f212352290c3d2858a
+  fingerprint: ea0325eae8991fafd318d8f212352290c3d2858a
+  sha1: 19211245cc909216d917e82b1ef1aad77a27bb4b
+- name: broker-agent
+  version: e193864f71cff3ceb9b9fa756af75ec7d26726b2
+  fingerprint: e193864f71cff3ceb9b9fa756af75ec7d26726b2
+  sha1: 9a603a149e6f919ac9d75dcf6bcd7b03a731615c
+- name: errand_simulation
+  version: 710f02c45a334a668ec56f27f8f748bfb5d81123
+  fingerprint: 710f02c45a334a668ec56f27f8f748bfb5d81123
+  sha1: a245347188b29e7f00e41eb39135fc89835f6916
+- name: pre-warm-failure-simulation
+  version: 8faa799c38f98ee110d229b36aced2133edf3da1
+  fingerprint: 8faa799c38f98ee110d229b36aced2133edf3da1
+  sha1: a8254af1cb3430f1083ba2224fe161c6f6d10e2e
+packages:
+- name: blueprint
+  version: 153d7ee6a7ea77c00c15ce186bf8db553f32e93a
+  fingerprint: 153d7ee6a7ea77c00c15ce186bf8db553f32e93a
+  sha1: b9d49d69d399f62d26c03f9bbb3fedc05f8b26e1
+  dependencies:
+  - node
+  - python
+- name: bosh-helpers
+  version: ac20614f3135bac0f1e5860862d812cf334ccfb5
+  fingerprint: ac20614f3135bac0f1e5860862d812cf334ccfb5
+  sha1: 584ac45c1e1654eb49cb97ceacb80ef3842e5ed1
+  dependencies: []
+- name: node
+  version: f52ecf027816d9bb601afaf566dad7ced94a767d
+  fingerprint: f52ecf027816d9bb601afaf566dad7ced94a767d
+  sha1: abaf3a8c9ebb2edb0847b88b4fb24cfa6bfe7112
+  dependencies: []
+- name: python
+  version: 28cb980524e88e97d65e28fd0dfdaf9e52b13bbe
+  fingerprint: 28cb980524e88e97d65e28fd0dfdaf9e52b13bbe
+  sha1: 2e2ea98ae5a2448df4745fa8affecc6c0c0ffb71
+  dependencies: []
+license:
+  version: 4769c65e2be7d485ec58dd91cb0e8fd268fa84c7
+  fingerprint: 4769c65e2be7d485ec58dd91cb0e8fd268fa84c7
+  sha1: 302e0491dc135ff652050c8aad843258839e7600
