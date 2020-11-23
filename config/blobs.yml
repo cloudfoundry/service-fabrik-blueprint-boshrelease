@@ -2,10 +2,10 @@ node/node-v6.9.1-linux-x64.tar.xz:
   size: 9351072
   object_id: c76f3e2b-5864-49b7-9dd0-66bb2526b9e6
   sha: 84b0b6fde43a4d892186119ba6b9f1db3c2c6129
-python/Python-3.5.2.tar.xz:
-  size: 15222676
-  object_id: 0288c930-bd08-4d77-7edd-62e5d14f04cd
-  sha: 4843aabacec5bc0cdd3e1f778faa926e532794d2
+python/Python-3.6.9.tar.xz:
+  size: 17212164
+  object_id: c7757c7b-1ac1-4474-475a-52e2e362b1d7
+  sha: b091282f729b31b74dcc7eaf6a52edd9e1619c76
 python/pip-18.1.tar.gz:
   size: 6211295
   object_id: 6b227ef6-401d-4d8a-5fdf-655e72ecfb4d
