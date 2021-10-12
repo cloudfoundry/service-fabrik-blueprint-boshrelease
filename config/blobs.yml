@@ -6,6 +6,10 @@ python/Python-3.6.9.tar.xz:
   size: 17212164
   object_id: c7757c7b-1ac1-4474-475a-52e2e362b1d7
   sha: 3cd8b0e814b753fcce4fdf7edc823d8fb0da9208
+python/Python-3.9.6.tar.xz:
+  size: 19051972
+  object_id: 0b5d4b7b-3b06-404a-46ef-520076ec96e5
+  sha: sha256:397920af33efc5b97f2e0b57e91923512ef89fc5b3c1d21dbfc8c4828ce0108a
 python/pip-18.1.tar.gz:
   size: 6211295
   object_id: 6b227ef6-401d-4d8a-5fdf-655e72ecfb4d

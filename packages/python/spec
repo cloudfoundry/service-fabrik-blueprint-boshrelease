@@ -4,4 +4,4 @@ name: python
 dependencies: []
 
 files:
-  - python/Python-3.6.9.tar.xz
+  - python/Python-3.9.6.tar.xz
