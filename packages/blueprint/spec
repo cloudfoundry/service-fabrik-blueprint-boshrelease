@@ -7,4 +7,4 @@ dependencies:
 
 files:
 - blueprint-service/**/*
-- python/pip-21.1.3.tar.gz
+- python/pip-21.3.tar.gz
