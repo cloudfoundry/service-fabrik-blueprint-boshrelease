@@ -6,6 +6,22 @@ set -u
 # We grab the latest versions that are in the directory
 PYTHON_VERSION=`ls -r python/Python-*.tar.xz | sed 's/python\/Python-\(.*\)\.tar\.xz/\1/' | head -1`
 
+echo "Extracting libffi-3.4.2.tar.gz ..."
+if ! tar xpvf python/libffi-3.4.2.tar.gz ; then
+  echo "Failed extracting libffi-3.4.2.tar.gz ..."
+  exit 1
+fi
+
+echo "Installing libffi..."
+pushd libffi-3.4.2
+  ./configure --prefix="${BOSH_INSTALL_TARGET}"/libffi
+  make
+  make install
+popd
+
+export LDFLAGS=-L${BOSH_INSTALL_TARGET}/libffi/lib
+export PKG_CONFIG_PATH=${BOSH_INSTALL_TARGET}/libffi/lib/pkgconfig
+
 # Extract python package
 echo "Extracting python ${PYTHON_VERSION}..."
 tar xpvf ${BOSH_COMPILE_TARGET}/python/Python-${PYTHON_VERSION}.tar.xz
