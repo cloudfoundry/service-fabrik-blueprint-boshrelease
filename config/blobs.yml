@@ -10,6 +10,10 @@ python/Python-3.9.1.tar.xz:
   size: 18897104
   object_id: ca327ef5-d4cb-4a2f-4afc-71d1a3044292
   sha: sha256:991c3f8ac97992f3d308fefeb03a64db462574eadbff34ce8bc5bb583d9903ff
+python/Python-3.9.7.tar.xz:
+  size: 19123232
+  object_id: 13144e9b-d74e-4297-781f-b40d0eadf289
+  sha: sha256:f8145616e68c00041d1a6399b76387390388f8359581abc24432bb969b5e3c57
 python/libffi-3.2.tar.gz:
   size: 940691
   object_id: ec9293e1-bcf2-4e22-7a9f-b4146278cf20
@@ -22,3 +26,7 @@ python/pip-19.0.3.tar.gz:
   size: 1324617
   object_id: 5132f606-d758-40b5-5792-edeb96619b15
   sha: sha256:6e6f197a1abfb45118dbb878b5c859a0edbdd33fd250100bc015b67fded4b9f2
+python/pip-19.3.1.tar.gz:
+  size: 1393609
+  object_id: 93fd3e8d-32ff-426c-589d-6f3947f97084
+  sha: sha256:21207d76c1031e517668898a6b46a9fb1501c7a4710ef5dfd6a40ad9e6757ea7
