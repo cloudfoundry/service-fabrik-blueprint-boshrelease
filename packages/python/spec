@@ -5,4 +5,4 @@ dependencies: []
 
 files:
   - python/Python-3.9.6.tar.xz
-  - python/libffi-3.4.2.tar.gz
+  - python/libffi-3.2.tar.gz
