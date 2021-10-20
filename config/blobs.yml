@@ -30,6 +30,10 @@ python/pip-19.3.1.tar.gz:
   size: 1393609
   object_id: 93fd3e8d-32ff-426c-589d-6f3947f97084
   sha: sha256:21207d76c1031e517668898a6b46a9fb1501c7a4710ef5dfd6a40ad9e6757ea7
+python/pip-21.2.3.tar.gz:
+  size: 1572274
+  object_id: 2afec27a-b5c3-4941-4f89-82052a0ccfce
+  sha: sha256:91e66f2a2702e7d2dcc092ed8c5ebe923e69b9997ea28ba25823943bcd3bf820
 python/pip-21.2.4.tar.gz:
   size: 1564487
   object_id: 885f8b5f-a5fd-41c3-791c-ecabe3c8aecd
