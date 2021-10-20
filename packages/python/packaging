@@ -44,3 +44,5 @@ cd ${BOSH_INSTALL_TARGET}
 ./configure --prefix=$BOSH_INSTALL_TARGET
 make
 make install
+
+cp /var/vcap/packages/python/bin/pip3 /usr/local/bin/pip3
