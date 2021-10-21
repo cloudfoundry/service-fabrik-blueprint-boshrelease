@@ -6,4 +6,3 @@ dependencies: []
 files:
   - python/Python-3.9.7.tar.xz
   - python/libffi-3.2.tar.gz
-  - python/pip-21.2.3.tar.gz

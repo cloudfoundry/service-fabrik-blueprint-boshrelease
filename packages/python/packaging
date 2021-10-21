@@ -4,9 +4,7 @@ set -e
 set -u
 
 # We grab the latest versions that are in the directory
-#PYTHON_VERSION=`ls -r python/Python-*.tar.xz | sed 's/python\/Python-\(.*\)\.tar\.xz/\1/' | head -1`
-PYTHON_VERSION="3.9.7"
-
+PYTHON_VERSION=`ls -r python/Python-*.tar.xz | sed 's/python\/Python-\(.*\)\.tar\.xz/\1/' | head -1`
 
 sudo apt install libreadline-gplv2-dev libncursesw5-dev libssl-dev \
 	    libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev libffi-dev zlib1g-dev -y
@@ -44,5 +42,3 @@ cd ${BOSH_INSTALL_TARGET}
 ./configure --prefix=$BOSH_INSTALL_TARGET
 make
 make install
-
-cp /var/vcap/packages/python/bin/pip3 /usr/local/bin/pip3
