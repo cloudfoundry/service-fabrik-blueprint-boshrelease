@@ -31,15 +31,20 @@ fi
 
 echo "Installing pip..."
 echo "Creating the pip site packages..."
-mkdir -p /var/vcap/packages/python/lib/python3.4/site-packages
+mkdir -p /var/vcap/packages/python/lib/python3.9/site-packages
 
 # Setting PYTHONPATH environment variable so that `pip3 install` used later can locate the custom modules/packages
 echo "Setting the PYTHONPATH with setuptools and pip site packages..."
-export PYTHONPATH=/var/vcap/packages/python/lib/python3.4/site-packages:$PYTHONLIBS
+export PYTHONPATH=/var/vcap/packages/python/lib/python3.9/site-packages:$PYTHONLIBS
 
 pushd pip-${PIP_VERSION}
   /var/vcap/packages/python/bin/python3 setup.py install --prefix=/var/vcap/packages/python
 popd
+
+# Download production dependencies
+cd /var/vcap/packages/blueprint/backuprestore/service_fabrik_backup_restore
+curl -sL https://bootstrap.pypa.io/get-pip.py | sudo /var/vcap/packages/python/bin/python3 -
+pip3 download --dest=./dependencies_sources -r requirements.txt
 
 # Install python dependencies
 cd ${SOURCES_PATH}

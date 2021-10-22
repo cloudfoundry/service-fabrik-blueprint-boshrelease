@@ -2,11 +2,15 @@ node/node-v6.9.1-linux-x64.tar.xz:
   size: 9351072
   object_id: c76f3e2b-5864-49b7-9dd0-66bb2526b9e6
   sha: 84b0b6fde43a4d892186119ba6b9f1db3c2c6129
-python/Python-3.6.9.tar.xz:
-  size: 17212164
-  object_id: c7757c7b-1ac1-4474-475a-52e2e362b1d7
-  sha: 3cd8b0e814b753fcce4fdf7edc823d8fb0da9208
-python/pip-18.1.tar.gz:
-  size: 6211295
-  object_id: 6b227ef6-401d-4d8a-5fdf-655e72ecfb4d
-  sha: 72f004c193f4cb04645d9bca3cdbc8f33ede530e
+python/Python-3.9.7.tar.xz:
+  size: 19123232
+  object_id: 13144e9b-d74e-4297-781f-b40d0eadf289
+  sha: sha256:f8145616e68c00041d1a6399b76387390388f8359581abc24432bb969b5e3c57
+python/libffi-3.2.tar.gz:
+  size: 940691
+  object_id: ec9293e1-bcf2-4e22-7a9f-b4146278cf20
+  sha: sha256:6b2680fbf6ae9c2381d381248705857de22e05bae191889298f8e6bfb2ded4ef
+python/pip-21.2.4.tar.gz:
+  size: 1564487
+  object_id: 885f8b5f-a5fd-41c3-791c-ecabe3c8aecd
+  sha: sha256:0eb8a1516c3d138ae8689c0c1a60fde7143310832f9dc77e11d8a4bc62de193b
