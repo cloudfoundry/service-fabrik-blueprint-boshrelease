@@ -43,7 +43,6 @@ popd
 
 # Download production dependencies
 cd /var/vcap/packages/blueprint/backuprestore/service_fabrik_backup_restore
-curl -sL https://bootstrap.pypa.io/get-pip.py | sudo /var/vcap/packages/python/bin/python3 -
 pip3 download --dest=./dependencies_sources -r requirements.txt
 
 # Install python dependencies
