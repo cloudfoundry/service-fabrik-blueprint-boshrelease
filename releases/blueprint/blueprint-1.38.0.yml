@@ -1,0 +1,59 @@
+name: blueprint
+version: 1.38.0
+commit_hash: 1cdd9ca
+uncommitted_changes: false
+jobs:
+- name: blueprint
+  version: 627c4df40040065436227ce714e9f99baa524643ebe67cfbe224a9a99e909d5d
+  fingerprint: 627c4df40040065436227ce714e9f99baa524643ebe67cfbe224a9a99e909d5d
+  sha1: sha256:d56aa783e85883bc37a3e77db3e3d44f3e2f30f97e1933dd15c02649abd0b35d
+  packages:
+  - bosh-helpers
+  - node
+  - blueprint
+- name: broker-agent
+  version: 4bb578d27d01006f104a75b0fb4c8a88d19ca5dd1c77a75f157a2ec73299d8db
+  fingerprint: 4bb578d27d01006f104a75b0fb4c8a88d19ca5dd1c77a75f157a2ec73299d8db
+  sha1: sha256:43acb0df3a9e8a9f87f2e56749efcc0c3506fd4b83742a9d90ad24b7bd1b9666
+  packages:
+  - bosh-helpers
+  - node
+  - python
+  - blueprint
+- name: errand_simulation
+  version: b1619cf526a38d276c4760d1b8b2fbed3e5fba2857eace4dbdb661c0f67acbe0
+  fingerprint: b1619cf526a38d276c4760d1b8b2fbed3e5fba2857eace4dbdb661c0f67acbe0
+  sha1: sha256:90c62ed17afd6b7ed589842f968f93f272dffa1dda18428b628b6f0581ba28ec
+  packages: []
+- name: pre-warm-failure-simulation
+  version: fb1b24fa4d7797686fed95ccbc4ae13d3fb42b74a9e08c8849d59b1c52b6dac5
+  fingerprint: fb1b24fa4d7797686fed95ccbc4ae13d3fb42b74a9e08c8849d59b1c52b6dac5
+  sha1: sha256:a939d4bcdbac8e80b7072cd6d63b1b8e4d76064d49e9895a72604d02326bfa14
+  packages: []
+packages:
+- name: blueprint
+  version: 946387a03b2d17ff1ada75d7ed7b16adcb55b558be55ac9fcf53cb4451d082c1
+  fingerprint: 946387a03b2d17ff1ada75d7ed7b16adcb55b558be55ac9fcf53cb4451d082c1
+  sha1: sha256:44bf989824d10c1d753cd0b7353572b26edbed311e933d3020d6984d15c3918a
+  dependencies:
+  - node
+  - python
+- name: bosh-helpers
+  version: 411be741bf42d32e429c83fe0fee072f87129f264763d0c6429dfdcf2cc9aaf3
+  fingerprint: 411be741bf42d32e429c83fe0fee072f87129f264763d0c6429dfdcf2cc9aaf3
+  sha1: sha256:408fbea2164a813adcf7f3dfec47e9271e872ea0156d871cf88fc5931aceee00
+  dependencies: []
+- name: node
+  version: 79605dca5628001c799757c1c05e8efcc894371e4606888506fec183532caca4
+  fingerprint: 79605dca5628001c799757c1c05e8efcc894371e4606888506fec183532caca4
+  sha1: sha256:372246fbda1de7ac21ae3daa2752ead76414146a62194f046d3a73e45e1f89ce
+  dependencies: []
+- name: python
+  version: 6802a9241b735ee52887ce43ed3e437397b1f773b2fcd897fca337acc3fb70f4
+  fingerprint: 6802a9241b735ee52887ce43ed3e437397b1f773b2fcd897fca337acc3fb70f4
+  sha1: sha256:58dc745c8ea5ea989758eb247bf6b5084b9a50907e336aa42e5578ba12323423
+  dependencies: []
+license:
+  version: c1ad290c29efb89c92bbd0efc2accf7fe165e061de1bfab35d36c23698477ca5
+  fingerprint: c1ad290c29efb89c92bbd0efc2accf7fe165e061de1bfab35d36c23698477ca5
+  sha1: sha256:bb84a94afdfd68b949faa96dd1779a446bdb17d742cda668d838ec076bfff333
