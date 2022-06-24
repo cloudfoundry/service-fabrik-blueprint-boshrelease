@@ -2,7 +2,7 @@
 
 ## Overview
 
-A Bosh release for [Blueprint service](https://github.com/SAP/service-fabrik-blueprint-service) which can be used a sample service to try [service-fabrik-broker](https://github.com/SAP/service-fabrik-broker).
+A Bosh release for [Blueprint service](https://github.com/cloudfoundry/service-fabrik-blueprint-service) which can be used a sample service to try [service-fabrik-broker](https://github.com/cloudfoundry/service-fabrik-broker).
 
 Idea of blue-print boshrelease is to provide a simple blueprint service that demonstrates the Bosh release, the service agent (in our case conveniently co-located with the service and the bosh release, but in your case most likely separate repositories and maybe even bosh releases if you consume a community bosh release), the deployment manifest template, and its catalog entry.
 
@@ -12,11 +12,11 @@ Idea of blue-print boshrelease is to provide a simple blueprint service that dem
 
 ## Download and Installation
 
- - Install Bosh-Lite following the instructions [here](https://github.com/SAP/service-fabrik-broker#installing-bosh-lite) .
+ - Install Bosh-Lite following the instructions [here](https://bosh.io/docs/bosh-lite/#install) .
  - Deploy on Bosh-Lite :
    
    ```
-   $ git clone https://github.com/sap/service-fabrik-blueprint-boshrelease.git
+   $ git clone https://github.com/cloudfoundry/service-fabrik-blueprint-boshrelease
    $ cd service-fabrik-blueprint-boshrelease
    $ bosh upload release $(ls -1rv releases/blueprint/blueprint-*.yml | head -1)
      Set the Bosh Director UUID in deployments/warden.yml
@@ -27,7 +27,7 @@ Idea of blue-print boshrelease is to provide a simple blueprint service that dem
 
 ## How to Obtain Support
 
- If you need any support, have any question or have found a bug, please report it in the [GitHub bug tracking system](https://github.com/SAP/service-fabrik-blueprint-boshrelease/issues). We shall get back to you.
+ If you need any support, have any question or have found a bug, please report it in the [GitHub bug tracking system](https://github.com/cloudfoundry/service-fabrik-blueprint-boshrelease/issues). We shall get back to you.
 
 
 ## LICENSE
