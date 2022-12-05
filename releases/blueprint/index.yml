@@ -87,6 +87,8 @@ builds:
     version: 1.30.0
   efe11fc7-eaf9-436c-65a1-3b722bba8905:
     version: 1.3.0
+  f6189ace-e685-4717-4036-f4cfe7a9c3f1:
+    version: 1.39.0
   ff12d997-b5fc-4e4e-6b21-a9134d3b8279:
     version: 1.15.0
 format-version: "2"
