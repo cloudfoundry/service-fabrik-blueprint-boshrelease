@@ -8,7 +8,6 @@ PATH=/var/vcap/packages/node/bin:/var/vcap/packages/python/bin:$PATH
 
 PYTHONLIBS=${BOSH_INSTALL_TARGET}/backuprestore/service_fabrik_backup_restore/dependencies
 SOURCES_PATH=${BOSH_INSTALL_TARGET}/backuprestore/service_fabrik_backup_restore/dependencies_sources
-PIP_VERSION=`ls -r python/pip-*.tar.gz | sed 's/python\/pip-\(.*\)\.tar\.gz/\1/' | head -1`
 
 # Copy the 'blueprint-service' directory from /src/ to the installation target of this release
 echo "Copying blueprint service files..."
@@ -19,31 +18,11 @@ echo "Rebuild NPM dependencies..."
 cd ${BOSH_INSTALL_TARGET}
 npm rebuild
 
-# update pip
-echo "Extracting pip ${PIP_VERSION}"
-tar xpvf ${BOSH_COMPILE_TARGET}/python/pip-${PIP_VERSION}.tar.gz
-if [[ $? != 0 ]]; then
-  echo "Failed extracting pip ${PIP_VERSION}"
-  exit 1
-else
-  echo "Successfully extracted pip-${PIP_VERSION}..."
-fi
-
-echo "Installing pip..."
-echo "Creating the pip site packages..."
-mkdir -p /var/vcap/packages/python/lib/python3.9/site-packages
-
-# Setting PYTHONPATH environment variable so that `pip3 install` used later can locate the custom modules/packages
-echo "Setting the PYTHONPATH with setuptools and pip site packages..."
-export PYTHONPATH=/var/vcap/packages/python/lib/python3.9/site-packages:$PYTHONLIBS
-
-pushd pip-${PIP_VERSION}
-  /var/vcap/packages/python/bin/python3 setup.py install --prefix=/var/vcap/packages/python
-popd
+PIP_CMD=/var/vcap/packages/python/bin/pip3
 
 # Download production dependencies
 cd /var/vcap/packages/blueprint/backuprestore/service_fabrik_backup_restore
-pip3 download --dest=./dependencies_sources -r requirements.txt
+$PIP_CMD download --dest=./dependencies_sources -r requirements.txt
 
 # Install python dependencies
 cd ${SOURCES_PATH}
