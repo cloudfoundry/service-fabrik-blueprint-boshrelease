@@ -6,6 +6,8 @@ set -u
 # We grab the latest versions that are in the directory
 PYTHON_VERSION=`ls -r python/Python-*.tar.xz | sed 's/python\/Python-\(.*\)\.tar\.xz/\1/' | head -1`
 
+sudo apt install libffi-dev -y
+
 echo "Extracting libffi-3.4.4.tar.gz ..."
 if ! tar xpvf python/libffi-3.4.4.tar.gz ; then
   echo "Failed extracting libffi-3.4.4.tar.gz ..."
